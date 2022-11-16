@@ -3,11 +3,11 @@ package entity
 import "fmt"
 
 type Book struct {
-	Name     string
-	isBorrow bool
+	Name   string `json:"name"`
+	Loaned bool   `json:"lent"`
 }
 
-func (b *Book) Borrow(i int) {
+func (b *Book) Lent(i int) {
 	fmt.Println("Book", b.Name, "is borrowed by user", i)
-	b.isBorrow = true
+	b.Loaned = true
 }

@@ -11,6 +11,8 @@ func NewSaveBookService() *SaveBookService {
 	return &SaveBookService{}
 }
 
-func (s *SaveBookService) Save(name string) entity.Book {
-	return entity.Book{Name: name}
+func (s *SaveBookService) Save(name string, channel chan entity.Book) {
+	go func() {
+		channel <- entity.Book{Name: name}
+	}()
 }
