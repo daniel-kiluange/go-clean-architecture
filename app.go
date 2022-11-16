@@ -2,14 +2,16 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
 	"go-clean-code/routes"
 )
 
 func main() {
+
 	engine := gin.Default()
 	routes.NewRoutes(engine)
-	err := engine.Run()
-	if err != nil {
+	serverErr := engine.Run()
+	if serverErr != nil {
 		return
 	}
 }

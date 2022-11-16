@@ -2,6 +2,6 @@ package input
 
 import "go-clean-code/entity"
 
-type SaveBookUseCase interface {
+type CreateBookUseCase interface {
 	Save(name string, channel chan entity.Book)
 }

@@ -7,15 +7,15 @@ import (
 	"net/http"
 )
 
-type SaveBookAdapter struct {
-	useCase input.SaveBookUseCase
+type CreateBookAdapter struct {
+	useCase input.CreateBookUseCase
 }
 
-func NewSaveBookAdapter(useCase input.SaveBookUseCase) *SaveBookAdapter {
-	return &SaveBookAdapter{useCase: useCase}
+func NewSaveBookAdapter(useCase input.CreateBookUseCase) *CreateBookAdapter {
+	return &CreateBookAdapter{useCase: useCase}
 }
 
-func (a *SaveBookAdapter) CreateBook() gin.HandlerFunc {
+func (a *CreateBookAdapter) CreateBook() gin.HandlerFunc {
 	var bookChannel = make(chan entity.Book, 1)
 	return func(context *gin.Context) {
 		var book entity.Book
