@@ -3,7 +3,7 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"go-clean-code/adapter/input"
-	"go-clean-code/service"
+	bookServiceImpl "go-clean-code/service/book"
 )
 
 type Routes struct {
@@ -13,15 +13,12 @@ type Routes struct {
 func NewRoutes(server *gin.Engine) {
 	r := Routes{server: server}
 
-	v1 := r.server.Group("/v1")
+	book := r.server.Group("/book")
 	{
-		book := v1.Group("/book")
-		{
-			var (
-				bookService = service.NewSaveBookService()
-				adapter     = input.NewSaveBookAdapter(bookService)
-			)
-			book.POST("", adapter.CreateBook())
-		}
+		var (
+			bookService = bookServiceImpl.NewSaveBookService()
+			adapter     = input.NewSaveBookAdapter(bookService)
+		)
+		book.POST("", adapter.CreateBook())
 	}
 }

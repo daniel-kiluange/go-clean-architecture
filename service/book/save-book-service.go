@@ -1,4 +1,4 @@
-package service
+package book
 
 import (
 	"go-clean-code/entity"
